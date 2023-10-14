@@ -44,7 +44,7 @@ if st.session_state.login_status:
             # Display the PDF using an iframe
             pdf_bytes = pdf_file.read()
             st.write("PDF Preview:")
-            display_home_page(pdf_file)
+            st.write(pdf_file)
             st.write(f"File size: {len(pdf_bytes)} bytes")
 
         # Create a URL for the PDF file
