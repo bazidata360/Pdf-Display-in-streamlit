@@ -51,8 +51,8 @@ if st.session_state.login_status:
             pdf_url = get_pdf_url(pdf_bytes)
 
         # Embed the PDF viewer using an iframe
-            st.write("PDF Viewer:")
-            st.write(f'<embed src="{pdf_url}" width="100%" height="600"></embed>', unsafe_allow_html=True)
+            pdf_display = f'<embed src="data:application/pdf;base64,{pdf_url}" width="700" height="1000" type="application/pdf">'
+            st.markdown(pdf_display, unsafe_allow_html=True)
 
     def get_pdf_url(pdf_bytes):
     # You can use a library or service to store the PDF temporarily and get a URL.
