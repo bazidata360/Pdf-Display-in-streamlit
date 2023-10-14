@@ -73,7 +73,7 @@ if st.session_state.login_status:
             st.markdown(f"[{user_link}]({user_link})")
     # Embed the PDF viewer using an iframe
             st.write("PDF Viewer:")
-            st.write(f'<embed src="{user_link}" width="100%" height="600"></embed>', unsafe_allow_html=True)
+            st.write(f'<iframe src="{user_link}" width="100%" height="600"></iframe>', unsafe_allow_html=True)
     if __name__ == '__main__':
         main()
 
