@@ -44,7 +44,7 @@ if st.session_state.login_status:
             # Display the PDF using an iframe
             pdf_bytes = pdf_file.read()
             st.write("PDF Preview:")
-            st.write(pdf_file)
+            display_home_page(pdf_file)
             st.write(f"File size: {len(pdf_bytes)} bytes")
 
         # Create a URL for the PDF file
@@ -52,7 +52,7 @@ if st.session_state.login_status:
 
         # Embed the PDF viewer using an iframe
             st.write("PDF Viewer:")
-            st.write(f'<embed src="{pdf_url}" width="100%" height="600"></embed>', unsafe_allow_html=True)
+            display_home_page(f'<embed src="{pdf_url}" width="100%" height="600"></embed>', unsafe_allow_html=True)
 
     def get_pdf_url(pdf_bytes):
     # You can use a library or service to store the PDF temporarily and get a URL.
