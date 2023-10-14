@@ -40,19 +40,12 @@ if st.session_state.login_status:
     # Upload a PDF file
         pdf_file = st.file_uploader("Upload a PDF file", type=["pdf"])
 
-        if pdf_file is not None:
-            # Display the PDF using an iframe
-            pdf_bytes = pdf_file.read()
-            st.write("PDF Preview:")
-            st.write(pdf_file)
-            st.write(f"File size: {len(pdf_bytes)} bytes")
-
-        # Create a URL for the PDF file
-            pdf_url = get_pdf_url(pdf_bytes)
-
-        # Embed the PDF viewer using an iframe
-            st.write("PDF Viewer:")
-            display_home_page(f'<embed src="{pdf_url}" width="100%" height="600"></embed>', unsafe_allow_html=True)
+        def show_pdf(pdf_file):
+            with open(pdf_file,"rb") as f:
+                  base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+            pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
+            st.markdown(pdf_display, unsafe_allow_html=True)
+        show_pdf("DFCU_Instructions_on_GUI.pdf")
 
     def get_pdf_url(pdf_bytes):
     # You can use a library or service to store the PDF temporarily and get a URL.
@@ -73,7 +66,7 @@ if st.session_state.login_status:
             st.markdown(f"[{user_link}]({user_link})")
     # Embed the PDF viewer using an iframe
             st.write("PDF Viewer:")
-            st.write(f'<iframe src="{user_link}" width="100%" height="600"></iframe>', unsafe_allow_html=True)
+            st.write(f'<embed src="{user_link}" width="100%" height="600"></embed>', unsafe_allow_html=True)
     if __name__ == '__main__':
         main()
 
