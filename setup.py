@@ -29,9 +29,10 @@ setup(
         'streamlit_option_menu',
         'trycourier',
         'streamlit_cookies_manager',
+        'base64' ,
     ],
 
-    keywords='streamlit, machine learning, login, sign-up, authentication, cookies',
+    keywords='streamlit, machine learning, login, sign-up, authentication, cookies', 'base64',
 
     packages=find_packages(),
 
